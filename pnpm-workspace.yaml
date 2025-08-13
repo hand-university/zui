@@ -1,0 +1,10 @@
+packages:
+  - playground
+  - packages/*
+
+ignoredBuiltDependencies:
+  - esbuild
+
+onlyBuiltDependencies:
+  - core-js
+  - simple-git-hooks
