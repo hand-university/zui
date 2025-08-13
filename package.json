@@ -59,7 +59,7 @@
     "happy-dom": "^18.0.1",
     "simple-git-hooks": "^2.13.1",
     "tsdown": "^0.14.1",
-    "tsx": "^4.20.3",
+    "tsx": "^4.20.4",
     "typescript": "^5.9.2",
     "unplugin-vue": "^7.0.1",
     "unplugin-vue-jsx": "^0.6.1",

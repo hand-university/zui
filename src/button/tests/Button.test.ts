@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Button from '../Button.vue'
+import Button from '../src/Button.vue'
 
 describe('button', () => {
   it('should render with slot', () => {

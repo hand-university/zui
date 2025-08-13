@@ -1,10 +1,67 @@
+import type { ComponentResolver } from 'unplugin-vue-components/types'
+import UnoCSS from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
 import VueJsx from 'unplugin-vue-jsx/vite'
+import Markdown from 'unplugin-vue-markdown/vite'
+import VueRouter from 'unplugin-vue-router/vite'
 import Vue from 'unplugin-vue/vite'
 import { defineConfig } from 'vite'
 
+function ZuiResolver(): ComponentResolver {
+  return {
+    type: 'component',
+    resolve: (name: string) => {
+      if (name.match(/^(Z[A-Z]|z-[a-z])/))
+        return { name, from: 'zui' }
+    },
+  }
+}
+
 export default defineConfig({
   plugins: [
-    Vue(),
-    VueJsx(),
+    // https://github.com/posva/unplugin-vue-router
+    VueRouter({
+      extensions: ['.vue', '.md'],
+    }),
+    Vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
+    VueJsx({
+      include: [/\.vue$/, /\.md$/],
+    }),
+    Markdown({}),
+
+    // https://github.com/antfu/unplugin-auto-import
+    AutoImport({
+      imports: [
+        'vue',
+        {
+          // add any other imports you were relying on
+          'vue-router/auto': ['useLink'],
+        },
+      ],
+      dts: true,
+      dirs: [
+        './src/composables',
+      ],
+      vueTemplate: true,
+    }),
+
+    // https://github.com/antfu/vite-plugin-components
+    Components({
+      dts: true,
+      resolvers: [
+        AntDesignVueResolver({
+          importStyle: false,
+        }),
+        ZuiResolver(),
+      ],
+    }),
+
+    // https://github.com/antfu/unocss
+    // see uno.config.ts for config
+    UnoCSS(),
   ],
 })
