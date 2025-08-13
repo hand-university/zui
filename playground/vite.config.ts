@@ -52,6 +52,8 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-components
     Components({
       dts: true,
+      extensions: ['vue', 'md'],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       resolvers: [
         AntDesignVueResolver({
           importStyle: false,
