@@ -8,6 +8,7 @@ import Markdown from 'unplugin-vue-markdown/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import Vue from 'unplugin-vue/vite'
 import { defineConfig } from 'vite'
+import Layouts from 'vite-plugin-vue-layouts'
 
 function ZuiResolver(): ComponentResolver {
   return {
@@ -32,6 +33,9 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
     }),
     Markdown({}),
+
+    // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
+    Layouts(),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
