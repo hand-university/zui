@@ -36,6 +36,9 @@ importers:
       '@vitest/ui':
         specifier: ^3.2.4
         version: 3.2.4(vitest@3.2.4)
+      '@vue-styled-components/core':
+        specifier: ^1.13.2
+        version: 1.13.2(vue@3.5.18(typescript@5.9.2))
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
@@ -1073,6 +1076,11 @@ packages:
     peerDependenciesMeta:
       vue:
         optional: true
+
+  '@vue-styled-components/core@1.13.2':
+    resolution: {integrity: sha512-SZ5uABvciZvQwSIvz0RWN82Tqm/v0M0/RmDOrDtIoYOk4I28eTGalRKgbLAX1whhIbTobmhHc4tMJ7jNdUwGww==}
+    peerDependencies:
+      vue: '>=3.2.0'
 
   '@vue/babel-helper-vue-jsx-merge-props@1.4.0':
     resolution: {integrity: sha512-JkqXfCkUDp4PIlFdDQ0TdXoIejMtTHP67/pvxlgeY+u5k3LEdKuWZ3LK6xkxo52uDoABIVyRwqVkfLQJhk7VBA==}
@@ -4046,6 +4054,12 @@ snapshots:
       magic-string-ast: 1.0.2
       unplugin-utils: 0.2.5
     optionalDependencies:
+      vue: 3.5.18(typescript@5.9.2)
+
+  '@vue-styled-components/core@1.13.2(vue@3.5.18(typescript@5.9.2))':
+    dependencies:
+      lodash-es: 4.17.21
+      stylis: 4.3.6
       vue: 3.5.18(typescript@5.9.2)
 
   '@vue/babel-helper-vue-jsx-merge-props@1.4.0': {}

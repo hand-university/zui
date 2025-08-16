@@ -1,24 +1,19 @@
 <script setup lang="ts">
 import type { ButtonType } from 'ant-design-vue/es/button'
 import { Button } from 'ant-design-vue'
-import { useStyle } from '../../composables/use-style'
-import style from './styles/index.cssr'
+import { demoButton } from './styles'
 
 defineProps<{
   type?: ButtonType
   color?: string
 }>()
-
-useStyle('button', style)
 </script>
 
 <template>
   <div>
     <div
       class="zui-button"
-      :class="[
-        type === 'primary' && 'zui-button--primary',
-      ]"
+      :class="demoButton"
     >
       测试按钮
     </div>
