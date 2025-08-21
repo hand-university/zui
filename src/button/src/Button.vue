@@ -13,7 +13,7 @@ defineProps<{
   <div>
     <div
       class="zui-button"
-      :class="styles.jssButton"
+      :class="styles.primaryButton"
     >
       测试按钮
     </div>
