@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ButtonType } from 'ant-design-vue/es/button'
 import { Button } from 'ant-design-vue'
-import { styles } from './styles/jss'
+import { styles } from './styles'
 
 defineProps<{
   type?: ButtonType

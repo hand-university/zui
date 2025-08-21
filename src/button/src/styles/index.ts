@@ -1,8 +1,13 @@
-import { cssClass } from '@vue-styled-components/core'
+import { useJss } from '../../../_utils/jss'
 
-export const demoButton = cssClass`
-  background-color: #4c5a6d;
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
-`
+const { create } = useJss()
+
+const sheet = create({
+  jssButton: {
+    color: 'red',
+    fontSize: '16px',
+    backgroundColor: 'yellow',
+  },
+})
+
+export const styles = sheet.classes
