@@ -1,3 +1,4 @@
+import type { Styles, StyleSheet } from 'jss'
 import { create } from 'jss'
 import camelCase from 'jss-plugin-camel-case'
 import preset from 'jss-preset-default'
@@ -11,12 +12,12 @@ const jss = create({
 
 export function useJss() {
   return {
-    create: (style: Parameters<typeof jss.createStyleSheet>['0'], options?: Parameters<typeof jss.createStyleSheet>['1']) => {
+    create: <T extends string>(style: Styles<T>, options?: Parameters<typeof jss.createStyleSheet>['1']) => {
       const res = jss.createStyleSheet(style, options)
 
       res.attach()
 
-      return res
+      return res as StyleSheet<T>
     },
   }
 }
