@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ButtonType } from 'ant-design-vue/es/button'
 import { Button } from 'ant-design-vue'
-import { demoButton } from './styles'
+import { styles } from './styles/jss'
 
 defineProps<{
   type?: ButtonType
@@ -13,7 +13,7 @@ defineProps<{
   <div>
     <div
       class="zui-button"
-      :class="demoButton"
+      :class="styles.jssButton"
     >
       测试按钮
     </div>
