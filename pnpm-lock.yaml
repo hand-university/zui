@@ -38,9 +38,6 @@ importers:
       jss-plugin-rule-value-function:
         specifier: ^10.10.0
         version: 10.10.0
-      jss-plugin-vendor-prefixer:
-        specifier: ^10.10.0
-        version: 10.10.0
       jss-preset-default:
         specifier: ^10.10.0
         version: 10.10.0
