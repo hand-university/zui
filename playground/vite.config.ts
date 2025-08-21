@@ -1,4 +1,5 @@
 import type { ComponentResolver } from 'unplugin-vue-components/types'
+import path from 'node:path'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
@@ -10,17 +11,24 @@ import Vue from 'unplugin-vue/vite'
 import { defineConfig } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
 
+const zuiPath = path.resolve(__dirname, '../src')
+
 function ZuiResolver(): ComponentResolver {
   return {
     type: 'component',
     resolve: (name: string) => {
       if (name.match(/^(Z[A-Z]|z-[a-z])/))
-        return { name, from: 'zui' }
+        return { name, from: zuiPath }
     },
   }
 }
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      zui: zuiPath,
+    },
+  },
   plugins: [
     // https://github.com/posva/unplugin-vue-router
     VueRouter({

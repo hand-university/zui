@@ -14,6 +14,6 @@ declare module 'vue' {
     ATabs: typeof import('ant-design-vue/es')['Tabs']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    ZButton: typeof import('zui')['ZButton']
+    ZButton: typeof import('./../src')['ZButton']
   }
 }

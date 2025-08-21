@@ -96,9 +96,6 @@ importers:
       vue-router:
         specifier: ^4.5.1
         version: 4.5.1(vue@3.5.19(typescript@5.9.2))
-      zui:
-        specifier: workspace:*
-        version: link:..
     devDependencies:
       unocss:
         specifier: ^66.4.2
