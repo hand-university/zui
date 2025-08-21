@@ -11,10 +11,7 @@ defineProps<{
 
 <template>
   <div>
-    <div
-      class="zui-button"
-      :class="styles.primaryButton"
-    >
+    <div :class="styles.jssButton">
       测试按钮
     </div>
     <Button :type="type" :color="color">

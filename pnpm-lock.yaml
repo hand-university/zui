@@ -17,6 +17,9 @@ importers:
       jss-plugin-camel-case:
         specifier: ^10.10.0
         version: 10.10.0
+      jss-plugin-compose:
+        specifier: ^10.10.0
+        version: 10.10.0
       jss-plugin-default-unit:
         specifier: ^10.10.0
         version: 10.10.0

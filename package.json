@@ -50,6 +50,7 @@
   "dependencies": {
     "jss": "^10.10.0",
     "jss-plugin-camel-case": "^10.10.0",
+    "jss-plugin-compose": "^10.10.0",
     "jss-plugin-default-unit": "^10.10.0",
     "jss-plugin-expand": "^10.10.0",
     "jss-plugin-extend": "^10.10.0",

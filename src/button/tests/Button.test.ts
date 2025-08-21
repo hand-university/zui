@@ -9,6 +9,6 @@ describe('button', () => {
       },
     })
 
-    expect(wrapper.text()).toMatchInlineSnapshot('"myButton"')
+    expect(wrapper.text()).toMatchInlineSnapshot('"测试按钮 myButton"')
   })
 })

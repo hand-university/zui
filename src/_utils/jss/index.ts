@@ -1,6 +1,7 @@
 import type { Styles, StyleSheet } from 'jss'
 import { create } from 'jss'
 import pluginCamelCase from 'jss-plugin-camel-case'
+import pluginCompose from 'jss-plugin-compose'
 import pluginDefaultUnit from 'jss-plugin-default-unit'
 import pluginExpand from 'jss-plugin-expand'
 import pluginExtend from 'jss-plugin-extend'
@@ -21,6 +22,7 @@ const jss = create({
     pluginPropsSort(),
     pluginRuleValueFunction(),
     pluginDefaultUnit(),
+    pluginCompose(),
   ],
   id: {
     minify: import.meta.env.MODE === 'production',

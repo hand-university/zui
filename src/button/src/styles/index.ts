@@ -8,6 +8,7 @@ export const sheet = create({
     fontSize: 18,
   },
   jssButton: {
+    'composes': ['zui-button', 'zui-button-primary'],
     'fontSize': 18,
     'backgroundColor': 'yellow',
     'padding': [5, 10],
