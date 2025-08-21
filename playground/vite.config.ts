@@ -78,4 +78,21 @@ export default defineConfig({
     // see uno.config.ts for config
     UnoCSS(),
   ],
+
+  optimizeDeps: {
+    include: [
+      'ant-design-vue',
+      'jss',
+      'jss-plugin-camel-case',
+      'jss-plugin-compose',
+      'jss-plugin-default-unit',
+      'jss-plugin-expand',
+      'jss-plugin-extend',
+      'jss-plugin-global',
+      'jss-plugin-nested',
+      'jss-plugin-props-sort',
+      'jss-plugin-rule-value-function',
+      'jss-preset-default',
+    ],
+  },
 })
