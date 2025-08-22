@@ -6,6 +6,9 @@
     "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "paths": {
+      "zui": ["../src"]
+    },
     "resolveJsonModule": true,
     "types": [
       "vite/client",
