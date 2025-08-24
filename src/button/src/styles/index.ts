@@ -18,7 +18,6 @@ export const sheet = create({
       width: 1,
       color: 'red',
     },
-    'transform': 'translateX(100px)',
     '&:hover': {
       backgroundColor: 'blue',
     },
