@@ -123,7 +123,7 @@ export default defineConfig({
   title,
   description,
   srcDir,
-  srcExclude: ['**/README.md'],
+  srcExclude: ['playground', '**/README.md'],
   rewrites: {
     'docs/index.md': 'index.md',
     'src/:component/demos/index.md': 'components/:component.md',
@@ -150,11 +150,6 @@ export default defineConfig({
       DocsPlugin(),
     ],
     optimizeDeps: {
-      exclude: [
-        '@nolebase/vitepress-plugin-enhanced-readabilities/client',
-        'vitepress',
-        '@nolebase/ui',
-      ],
       include: [
         'ant-design-vue',
         'jss',
@@ -172,8 +167,16 @@ export default defineConfig({
     },
     ssr: {
       noExternal: [
-        '@nolebase/vitepress-plugin-enhanced-readabilities',
-        '@nolebase/ui',
+        'jss-plugin-camel-case',
+        'jss-plugin-compose',
+        'jss-plugin-default-unit',
+        'jss-plugin-expand',
+        'jss-plugin-extend',
+        'jss-plugin-global',
+        'jss-plugin-nested',
+        'jss-plugin-props-sort',
+        'jss-plugin-rule-value-function',
+        'jss-preset-default',
       ],
     },
   },
