@@ -13,7 +13,6 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "unocss": "^66.4.2",
     "unplugin-auto-import": "^20.0.0",
     "unplugin-vue-components": "^29.0.0",
     "unplugin-vue-markdown": "^29.1.0",

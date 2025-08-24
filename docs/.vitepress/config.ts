@@ -1,12 +1,15 @@
 import type { ComponentResolver } from 'unplugin-vue-components/types'
 import type { DefaultTheme } from 'vitepress'
-import fs from 'node:fs'
+import { readdirSync } from 'node:fs'
 import path from 'node:path'
 import { pascalCase } from 'es-toolkit'
+import UnoCSS from 'unocss/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vitepress'
 import { version } from '../../package.json'
+import { DocsPlugin } from './plugins/vite-plugin-docs'
+import { vitepressPluginDemo } from './plugins/vitepress-plugin-demo'
 
 const title = 'ZUI'
 const description = 'A Vue 3 Component Library'
@@ -30,7 +33,7 @@ const Docs: DefaultTheme.NavItemWithLink[] = [
 ]
 
 function getComponents(): DefaultTheme.NavItemWithLink[] {
-  const files = fs.readdirSync(zuiPath, { withFileTypes: true })
+  const files = readdirSync(zuiPath, { withFileTypes: true })
   const exclude = ['_utils', 'composables']
 
   const demos = files.map((file) => {
@@ -125,6 +128,11 @@ export default defineConfig({
     'docs/index.md': 'index.md',
     'src/:component/demos/index.md': 'components/:component.md',
   },
+  markdown: {
+    config: (md) => {
+      vitepressPluginDemo(md)
+    },
+  },
   vite: {
     plugins: [
       Components({
@@ -138,8 +146,15 @@ export default defineConfig({
           ZuiResolver(),
         ],
       }),
+      UnoCSS(),
+      DocsPlugin(),
     ],
     optimizeDeps: {
+      exclude: [
+        '@nolebase/vitepress-plugin-enhanced-readabilities/client',
+        'vitepress',
+        '@nolebase/ui',
+      ],
       include: [
         'ant-design-vue',
         'jss',
@@ -153,6 +168,12 @@ export default defineConfig({
         'jss-plugin-props-sort',
         'jss-plugin-rule-value-function',
         'jss-preset-default',
+      ],
+    },
+    ssr: {
+      noExternal: [
+        '@nolebase/vitepress-plugin-enhanced-readabilities',
+        '@nolebase/ui',
       ],
     },
   },

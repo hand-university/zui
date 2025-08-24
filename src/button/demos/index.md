@@ -4,18 +4,24 @@
 
 ## 演示
 
-<ZButton type="primary">
-  测试按钮
-</ZButton>
+:::demo
+basic.vue
+:::
+
+:::demo
+color.vue
+:::
 
 ## API
 
+<!-- API -->
+
 ### Button Props
 
-| 名称 | 类型 | 默认值 | 说明 | 版本 |
-| --- | --- | --- | --- | --- |
-| type | `'default' \| 'tertiary' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'default'` | 按钮的类型 |  |
-| color | `string` | `undefined` | 按钮颜色（支持形如 `#FFF`， `#FFFFFF`， `yellow`，`rgb(0, 0, 0)` 的颜色） |  |
+| 名称  | 类型                                                                                  | 默认值      | 说明                                                                      | 版本 |
+| ----- | ------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------- | ---- |
+| type  | `'default' \| 'tertiary' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'default'` | 按钮的类型                                                                |      |
+| color | `string`                                                                              | `undefined` | 按钮颜色（支持形如 `#FFF`， `#FFFFFF`， `yellow`，`rgb(0, 0, 0)` 的颜色） |      |
 
 ### Button Slots
 

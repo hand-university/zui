@@ -1,0 +1,180 @@
+<script setup lang="ts">
+import { useClipboard } from '@vueuse/core'
+import { computed, ref } from 'vue'
+
+const props = defineProps<{
+  src: string
+  github: string
+  source: string
+}>()
+
+const el = ref<HTMLElement | null>(null)
+const showCode = ref(false)
+const code = computed(() => decodeURIComponent(props.source))
+
+const { copy } = useClipboard({ source: code.value })
+function handleCopy() {
+  copy()
+}
+</script>
+
+<template>
+  <ClientOnly>
+    <div class="mt-6 border border-solid py-4 px-2 rounded border-slate-200">
+      <div>
+        <div ref="el" />
+      </div>
+      <div
+        v-if="showCode"
+        class="border-t-1px border-t-solid border-slate-200 pt-2 flex justify-end items-center mt-4"
+      >
+        code
+      </div>
+      <div
+        class="border-t-1px border-t-solid border-slate-200 pt-2 flex justify-end items-center mt-4"
+      >
+        <div
+          title="show source code"
+          class="i-carbon-code mx-2 cursor-pointer"
+          style="color: #737373"
+          @click="showCode = !showCode"
+        />
+        <div
+          title="copy source code"
+          class="i-carbon-copy-file mx-2 cursor-pointer"
+          style="color: #737373"
+          @click="handleCopy()"
+        />
+        <a
+          :href="`https://github.com/ikun-svelte/ikun-ui/tree/main/components/${github}`"
+          target="_blank"
+          class="mx-2"
+        >
+          <div title="open in github" class="i-carbon-logo-github" style="color: #737373" />
+        </a>
+      </div>
+    </div>
+  </ClientOnly>
+</template>
+
+<style>
+.k-docs-code {
+  width: 100%;
+  font-size: 14px;
+}
+.hljs {
+  border-radius: 8px;
+}
+</style>
+
+<style>
+.vp-doc .demo-link .k-link--default {
+  color: var(--ikun-gray-500);
+}
+.vp-doc .demo-link .k-link--success {
+  color: var(--ikun-green-400);
+}
+.vp-doc .demo-link .k-link--warning {
+  color: var(--ikun-amber-400);
+}
+.vp-doc .demo-link .k-link--primary {
+  color: var(--ikun-teal-400);
+}
+.vp-doc .demo-link .k-link--info {
+  color: var(--ikun-gray-400);
+}
+.vp-doc .demo-link .k-link--error {
+  color: var(--ikun-rose-400);
+}
+.vp-doc .demo-link .k-link--underline__none {
+  text-decoration: none;
+}
+.vp-doc .demo-empty p {
+  margin: 0 !important;
+}
+
+.vp-doc .demon-dropdown .k-link--underline__none {
+  text-decoration: none;
+}
+
+.vp-doc .demon-dropdown .k-link--primary {
+  color: var(--ikun-teal-400);
+}
+
+.vp-doc ul.k-skeleton-paragraph {
+  padding: 0;
+}
+
+.vp-doc ul.k-menu {
+  padding: 0;
+  margin: 0;
+}
+
+.vp-doc ul.k-menu-horizontal.k-menu-sub-horizontal,
+.vp-doc ul.k-menu-vertical.k-menu-sub-vertical {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.vp-doc li.k-timeline-item {
+  margin-top: 0;
+}
+
+.vp-doc ul.k-timeline {
+  padding-right: 1.25rem;
+}
+
+.vp-doc table.k-calendar-content {
+  box-sizing: border-box;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  display: table;
+  margin: 0;
+  overflow-x: visible;
+}
+
+.vp-doc table.k-calendar-content tr {
+  background-color: rgba(0, 0, 0, 0);
+  border-top-color: rgb(128, 128, 128);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-top-style: none;
+  border-top-width: 0px;
+  transition-behavior: normal;
+  transition-delay: 0s;
+  transition-duration: 0s;
+  transition-property: all;
+  transition-timing-function: ease;
+  view-transition-name: none;
+}
+
+.vp-doc th.k-calendar-thead-card,
+.vp-doc th.k-calendar-thead {
+  position: relative;
+  box-sizing: border-box;
+  min-width: 24px;
+  border-radius: 18px;
+  padding-bottom: 4px;
+  padding-right: 12px;
+  vertical-align: middle;
+  font-weight: 400;
+  border: none;
+  padding-top: 0;
+  padding-left: 0;
+  background-color: transparent;
+  text-align: right;
+  font-size: 14px;
+  color: #0a0a0a;
+}
+
+.vp-doc td.k-calendar-cell {
+  padding: 0;
+  border: none;
+}
+
+.vp-doc th.k-calendar-thead-card--dark,
+.vp-doc th.k-calendar-thead--dark {
+  color: white;
+}
+</style>
