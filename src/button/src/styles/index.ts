@@ -1,8 +1,6 @@
-import { useJss } from '../../../_utils/jss'
+import { createStyleSheet } from '../../../_utils/jss'
 
-const { create } = useJss()
-
-export const sheet = create({
+export const sheet = createStyleSheet({
   primaryButton: {
     backgroundColor: 'yellow',
     fontSize: 18,

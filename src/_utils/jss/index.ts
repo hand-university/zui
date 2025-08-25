@@ -29,14 +29,15 @@ const jss = create({
   },
 }).setup(preset())
 
-export function useJss() {
-  return {
-    create: <T extends string>(style: Styles<T>, options?: Parameters<typeof jss.createStyleSheet>['1']) => {
-      const res = jss.createStyleSheet(style, options)
+export function createStyleSheet<T extends string>(style: Styles<T>, options?: Parameters<typeof jss.createStyleSheet>['1']) {
+  const res = jss.createStyleSheet(style, options)
 
-      res.attach()
+  res.attach()
 
-      return res as StyleSheet<T>
-    },
-  }
+  return res as StyleSheet<T>
+}
+
+export function removeStyleSheet<T extends string>(styleSheet: StyleSheet<T>) {
+  styleSheet.detach()
+  jss.removeStyleSheet(styleSheet)
 }
