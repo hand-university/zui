@@ -176,7 +176,9 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/hand-university/zui/edit/main/docs/:path',
+      pattern: ({ filePath }) => {
+        return `https://github.com/hand-university/zui/edit/main/${filePath}`
+      },
       text: '在 GitHub 上编辑此页面',
     },
 
