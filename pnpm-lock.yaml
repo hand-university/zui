@@ -129,6 +129,9 @@ importers:
       vitepress:
         specifier: 2.0.0-alpha.12
         version: 2.0.0-alpha.12(@types/node@24.3.0)(async-validator@4.2.5)(change-case@5.4.4)(jiti@2.5.1)(less@4.4.1)(postcss@8.5.6)(tsx@4.20.4)(typescript@5.9.2)(yaml@2.8.1)
+      vitepress-demo-plugin:
+        specifier: ^1.4.7
+        version: 1.4.7(shiki@3.11.0)(vitepress@2.0.0-alpha.12(@types/node@24.3.0)(async-validator@4.2.5)(change-case@5.4.4)(jiti@2.5.1)(less@4.4.1)(postcss@8.5.6)(tsx@4.20.4)(typescript@5.9.2)(yaml@2.8.1))(vue@3.5.19(typescript@5.9.2))
 
   playground:
     dependencies:
@@ -3329,6 +3332,13 @@ packages:
         optional: true
       yaml:
         optional: true
+
+  vitepress-demo-plugin@1.4.7:
+    resolution: {integrity: sha512-Au2uh8qvGcuX7WZgJGA7RkWEO387LxyAFsZ6Dm4KU0TE38FMvTVRdXg3FJDH5lT7tivcEZAzdjOA26chm98t1w==}
+    peerDependencies:
+      shiki: '*'
+      vitepress: '*'
+      vue: ^3.2.0
 
   vitepress@2.0.0-alpha.12:
     resolution: {integrity: sha512-yZwCwRRepcpN5QeAhwSnEJxS3I6zJcVixqL1dnm6km4cnriLpQyy2sXQDsE5Ti3pxGPbhU51nTMwI+XC1KNnJg==}
@@ -7126,6 +7136,12 @@ snapshots:
       less: 4.4.1
       tsx: 4.20.4
       yaml: 2.8.1
+
+  vitepress-demo-plugin@1.4.7(shiki@3.11.0)(vitepress@2.0.0-alpha.12(@types/node@24.3.0)(async-validator@4.2.5)(change-case@5.4.4)(jiti@2.5.1)(less@4.4.1)(postcss@8.5.6)(tsx@4.20.4)(typescript@5.9.2)(yaml@2.8.1))(vue@3.5.19(typescript@5.9.2)):
+    dependencies:
+      shiki: 3.11.0
+      vitepress: 2.0.0-alpha.12(@types/node@24.3.0)(async-validator@4.2.5)(change-case@5.4.4)(jiti@2.5.1)(less@4.4.1)(postcss@8.5.6)(tsx@4.20.4)(typescript@5.9.2)(yaml@2.8.1)
+      vue: 3.5.19(typescript@5.9.2)
 
   vitepress@2.0.0-alpha.12(@types/node@24.3.0)(async-validator@4.2.5)(change-case@5.4.4)(jiti@2.5.1)(less@4.4.1)(postcss@8.5.6)(tsx@4.20.4)(typescript@5.9.2)(yaml@2.8.1):
     dependencies:

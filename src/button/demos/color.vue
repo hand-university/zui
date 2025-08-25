@@ -1,4 +1,4 @@
-<docs>
+<!-- <docs>
 ---
 title: 颜色
 order: 1
@@ -7,7 +7,7 @@ order: 1
 # 颜色
 
 按钮的`color`属性用于设置按钮的颜色
-</docs>
+</docs> -->
 
 <script setup lang="ts">
 
@@ -15,8 +15,7 @@ order: 1
 
 <template>
   <div>
-    <z-button>Default</z-button>
-    <z-button type="primary">
+    <z-button color="#f00">
       Primary
     </z-button>
   </div>

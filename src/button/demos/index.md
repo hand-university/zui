@@ -4,13 +4,12 @@
 
 ## 演示
 
-:::demo
-basic.vue
-:::
+<!-- DEMO -->
 
-:::demo
-color.vue
-:::
+<demo vue="button/demos/basic.vue" />
+<demo vue="button/demos/color.vue" />
+
+<!-- DEMO -->
 
 ## API
 
@@ -29,3 +28,5 @@ color.vue
 | ------- | ---- | ---------- |
 | default | `()` | 按钮的内容 |
 | icon    | `()` | 按钮的图标 |
+
+<!-- API -->

@@ -1,4 +1,4 @@
-<docs>
+<!-- <docs>
 ---
 order: 0
 title: 基础
@@ -7,7 +7,7 @@ title: 基础
 # 基础
 
 按钮的`type`属性用于设置按钮的类型，可选值为`default`、`primary`、`success`、`warning`、`error`。
-</docs>
+</docs> -->
 
 <script setup lang="ts">
 
@@ -15,9 +15,9 @@ title: 基础
 
 <template>
   <div>
-    <z-button>Default</z-button>
-    <z-button type="primary">
+    <ZButton>Default</ZButton>
+    <ZButton type="primary">
       Primary
-    </z-button>
+    </ZButton>
   </div>
 </template>

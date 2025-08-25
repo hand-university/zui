@@ -7,9 +7,9 @@ import UnoCSS from 'unocss/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vitepress'
+import { vitepressDemoPlugin } from 'vitepress-demo-plugin'
 import { version } from '../../package.json'
 import { DocsPlugin } from './plugins/vite-plugin-docs'
-import { vitepressPluginDemo } from './plugins/vitepress-plugin-demo'
 
 const title = 'ZUI'
 const description = 'A Vue 3 Component Library'
@@ -130,7 +130,9 @@ export default defineConfig({
   },
   markdown: {
     config: (md) => {
-      vitepressPluginDemo(md)
+      md.use(vitepressDemoPlugin, {
+        demoDir: zuiPath,
+      })
     },
   },
   vite: {
