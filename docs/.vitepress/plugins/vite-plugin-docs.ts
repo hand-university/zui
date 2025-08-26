@@ -9,7 +9,7 @@ export function DocsPlugin(): Plugin {
         if (event !== 'add' && event !== 'unlink')
           return
 
-        if (!path.includes('demos') && !path.endsWith('.md')) {
+        if (!path.match(/demos\/.*\.vue$/)) {
           return
         }
 
