@@ -122,7 +122,7 @@ export default defineConfig({
   title,
   description,
   srcDir: docsRootDir,
-  srcExclude: ['playground', '**/README.md'],
+  srcExclude: ['playground', 'packages', '**/README.md'],
   rewrites: {
     'docs/index.md': 'index.md',
     'docs/components/index.md': 'components/index.md',
