@@ -1,6 +1,6 @@
 import type { ComponentResolver } from 'unplugin-vue-components/types'
 import type { DefaultTheme } from 'vitepress'
-import { readdirSync } from 'node:fs'
+import { existsSync, readdirSync } from 'node:fs'
 import path from 'node:path'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import { pascalCase } from 'es-toolkit'
@@ -34,12 +34,12 @@ const Docs: DefaultTheme.NavItemWithLink[] = [
   { text: 'API 示例', link: '/docs/api-examples' },
 ]
 
-function getComponents(): DefaultTheme.NavItemWithLink[] {
+function getComponentsList(): DefaultTheme.NavItemWithLink[] {
   const files = readdirSync(sourceDir, { withFileTypes: true })
   const exclude = ['_utils', 'composables']
 
   const demos = files.map((file) => {
-    if (file.isDirectory() && !exclude.includes(file.name)) {
+    if (file.isDirectory() && existsSync(`${sourceDir}/${file.name}/demos/index.md`) && !exclude.includes(file.name)) {
       const component = file.name
 
       return {
@@ -55,8 +55,15 @@ function getComponents(): DefaultTheme.NavItemWithLink[] {
   return demos
 }
 
+const SidebarComponents: DefaultTheme.SidebarItem[] = getComponentsList()
+
 const Nav: DefaultTheme.NavItem[] = [
   { text: '主页', link: '/' },
+  {
+    text: '组件',
+    link: '/components/',
+    activeMatch: '^/components/',
+  },
   {
     text: '文档',
     items: [
@@ -66,20 +73,6 @@ const Nav: DefaultTheme.NavItem[] = [
       },
     ],
     activeMatch: '^/docs/',
-  },
-  {
-    text: '组件',
-    items: [
-      {
-        text: '基础组件',
-        items: getComponents(),
-      },
-      {
-        text: '业务组件',
-        items: [],
-      },
-    ],
-    activeMatch: '^/components/',
   },
   {
     text: `v${version}`,
@@ -109,10 +102,14 @@ const SidebarDocs: DefaultTheme.SidebarItem[] = [
   },
 ]
 
-const SidebarComponents: DefaultTheme.SidebarItem[] = [
+const SidebarComponentsGroup: DefaultTheme.SidebarItem[] = [
+  {
+    text: '组件总览',
+    link: '/components/',
+  },
   {
     text: '基础组件',
-    items: getComponents(),
+    items: SidebarComponents,
   },
   {
     text: '业务组件',
@@ -128,6 +125,7 @@ export default defineConfig({
   srcExclude: ['playground', '**/README.md'],
   rewrites: {
     'docs/index.md': 'index.md',
+    'docs/components/index.md': 'components/index.md',
     'src/:component/demos/index.md': 'components/:component.md',
   },
   markdown: {
@@ -174,7 +172,7 @@ export default defineConfig({
 
     sidebar: {
       '/docs/': SidebarDocs,
-      '/components/': SidebarComponents,
+      '/components/': SidebarComponentsGroup,
     },
 
     socialLinks: [
