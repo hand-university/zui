@@ -9,6 +9,7 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vitepress'
 import { vitepressDemoPlugin } from 'vitepress-demo-plugin'
+import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import { version } from '../../package.json'
 import { DocsPlugin } from './plugins/vite-plugin-docs'
 
@@ -134,6 +135,7 @@ export default defineConfig({
       transformerTwoslash(),
     ],
     config: (md) => {
+      md.use(groupIconMdPlugin)
       md.use(vitepressDemoPlugin, {
         demoDir: sourceDir,
       })
@@ -153,6 +155,7 @@ export default defineConfig({
         ],
       }),
       UnoCSS(),
+      groupIconVitePlugin(),
       DocsPlugin(),
     ],
   },
