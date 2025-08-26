@@ -11,7 +11,7 @@ export default defineConfig({
   unbundle: true,
   exports: true,
   // minify: true,
-  platform: 'neutral',
+  platform: 'browser',
   dts: {
     vue: true,
   },
