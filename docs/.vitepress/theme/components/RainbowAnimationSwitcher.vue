@@ -1,13 +1,12 @@
 <script lang="ts" setup>
-import { useLocalStorage, useMediaQuery } from '@vueuse/core'
+import { useLocalStorage } from '@vueuse/core'
 import { inBrowser } from 'vitepress'
 import { computed, watch } from 'vue'
 
 defineProps<{ text?: string, screenMenu?: boolean }>()
 
-const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)').value
-
-const animated = useLocalStorage('animate-rainbow', inBrowser ? !reduceMotion : true)
+// const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)').value
+const animated = useLocalStorage('animate-rainbow', false)
 
 function toggleRainbow() {
   animated.value = !animated.value
