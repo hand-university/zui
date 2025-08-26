@@ -51,7 +51,6 @@
     "vue": "^3.0.0"
   },
   "dependencies": {
-    "@vueuse/core": "^13.7.0",
     "jss": "^10.10.0",
     "jss-plugin-camel-case": "^10.10.0",
     "jss-plugin-compose": "^10.10.0",
@@ -72,6 +71,7 @@
     "@vitest/ui": "^3.2.4",
     "@vue/compiler-sfc": "^3.5.20",
     "@vue/test-utils": "^2.4.6",
+    "@vueuse/core": "^13.7.0",
     "bumpp": "^10.2.3",
     "es-toolkit": "^1.39.10",
     "eslint": "^9.34.0",
