@@ -32,6 +32,28 @@ export default {
 }
 ```
 
+### Twoslash
+
+**Input**
+
+````md
+```ts twoslash
+const a = 1
+//    ^?
+
+console.log(a)
+```
+````
+
+**Output**
+
+```ts twoslash
+const a = 1
+//    ^?
+
+console.log(a)
+```
+
 ## Custom Containers
 
 **Input**

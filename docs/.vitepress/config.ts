@@ -2,6 +2,7 @@ import type { ComponentResolver } from 'unplugin-vue-components/types'
 import type { DefaultTheme } from 'vitepress'
 import { readdirSync } from 'node:fs'
 import path from 'node:path'
+import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import { pascalCase } from 'es-toolkit'
 import UnoCSS from 'unocss/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
@@ -14,15 +15,15 @@ import { DocsPlugin } from './plugins/vite-plugin-docs'
 const title = 'ZUI'
 const description = 'A Vue 3 Component Library'
 
-const srcDir = path.resolve(__dirname, '../../')
-const zuiPath = path.resolve(srcDir, 'src')
+const docsRootDir = path.resolve(__dirname, '../../')
+const sourceDir = path.resolve(docsRootDir, 'src')
 
 function ZuiResolver(): ComponentResolver {
   return {
     type: 'component',
     resolve: (name: string) => {
       if (name.match(/^(Z[A-Z]|z-[a-z])/))
-        return { name, from: zuiPath }
+        return { name, from: sourceDir }
     },
   }
 }
@@ -33,7 +34,7 @@ const Docs: DefaultTheme.NavItemWithLink[] = [
 ]
 
 function getComponents(): DefaultTheme.NavItemWithLink[] {
-  const files = readdirSync(zuiPath, { withFileTypes: true })
+  const files = readdirSync(sourceDir, { withFileTypes: true })
   const exclude = ['_utils', 'composables']
 
   const demos = files.map((file) => {
@@ -122,16 +123,19 @@ export default defineConfig({
   lang: 'zh-Hans',
   title,
   description,
-  srcDir,
+  srcDir: docsRootDir,
   srcExclude: ['playground', '**/README.md'],
   rewrites: {
     'docs/index.md': 'index.md',
     'src/:component/demos/index.md': 'components/:component.md',
   },
   markdown: {
+    codeTransformers: [
+      transformerTwoslash(),
+    ],
     config: (md) => {
       md.use(vitepressDemoPlugin, {
-        demoDir: zuiPath,
+        demoDir: sourceDir,
       })
     },
   },
