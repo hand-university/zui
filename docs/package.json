@@ -9,6 +9,7 @@
     "preview": "vitepress preview"
   },
   "devDependencies": {
+    "@iconify-json/tabler": "^1.2.22",
     "@shikijs/vitepress-twoslash": "^3.11.0",
     "unplugin-auto-import": "^20.0.0",
     "unplugin-vue-components": "^29.0.0",

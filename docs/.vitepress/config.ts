@@ -31,7 +31,7 @@ function ZuiResolver(): ComponentResolver {
 
 const Docs: DefaultTheme.NavItemWithLink[] = [
   { text: 'Markdown 示例', link: '/docs/markdown-examples' },
-  { text: 'Api 示例', link: '/docs/api-examples' },
+  { text: 'API 示例', link: '/docs/api-examples' },
 ]
 
 function getComponents(): DefaultTheme.NavItemWithLink[] {
@@ -134,6 +134,7 @@ export default defineConfig({
     codeTransformers: [
       transformerTwoslash(),
     ],
+    languages: ['js', 'jsx', 'ts', 'tsx', 'vue'],
     config: (md) => {
       md.use(groupIconMdPlugin)
       md.use(vitepressDemoPlugin, {
@@ -144,8 +145,10 @@ export default defineConfig({
   vite: {
     plugins: [
       Components({
-        dts: false,
-        extensions: ['vue', 'md'],
+        dirs: [
+          'docs/.vitepress/theme/components',
+        ],
+        dts: 'docs/components.d.ts',
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         resolvers: [
           AntDesignVueResolver({
