@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import type { ButtonType } from 'ant-design-vue/es/button'
+import type { ButtonEvents, ButtonSlots } from './interface'
 import { Button } from 'ant-design-vue'
+import { buttonProps } from './interface'
 import { styles } from './styles'
 
-defineProps<{
-  type?: ButtonType
-  color?: string
-}>()
+defineOptions({
+  name: 'ZButton',
+})
+defineProps(buttonProps)
+defineEmits<ButtonEvents>()
+defineSlots<ButtonSlots>()
 </script>
 
 <template>
