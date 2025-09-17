@@ -1,0 +1,32 @@
+{
+  "name": "@zui/icons",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "ZUI Icons icon set in Iconify JSON format",
+  "iconSetVersion": "1.0.0",
+  "exports": {
+    "./*": "./dist/*",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./icons.json": "./dist/icons.json",
+    "./info.json": "./dist/info.json",
+    "./metadata.json": "./dist/metadata.json"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "init": "tsx src/index.ts"
+  },
+  "iconSet": {
+    "icons": "icons.json",
+    "info": "info.json",
+    "metadata": "metadata.json"
+  },
+  "dependencies": {
+    "@iconify/types": "*"
+  }
+}
