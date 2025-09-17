@@ -8,9 +8,9 @@ export default defineConfig({
     Vue({ isProduction: true }),
     VueJsx(),
   ],
-  unbundle: true,
+  // unbundle: true,
   exports: true,
-  // minify: true,
+  minify: true,
   platform: 'browser',
   dts: {
     vue: true,
