@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useClipboard } from '@vueuse/core'
+import { useClipboard, useStorage } from '@vueuse/core'
 import { icons } from '@zui/icons'
 import { Empty, message } from 'ant-design-vue'
 import { computed, ref } from 'vue'
@@ -10,7 +10,14 @@ const typeOptions = [
   { label: 'Filled', value: 'filled' },
 ]
 
-const type = ref('outline')
+const styleOptions = [
+  { label: 'ZUI', value: 'zui' },
+  { label: 'UnoCSS', value: 'unocss' },
+]
+
+const type = useStorage('icon-type', 'outline')
+const copyStyle = useStorage('copy-icon-style', 'zui')
+
 const search = ref('')
 
 const { copy } = useClipboard()
@@ -30,7 +37,12 @@ const iconListFiltered = computed(() => {
 })
 
 async function handleCopy(icon: string) {
-  await copy(`<ZIcon icon="zui:${icon}" />`)
+  if (copyStyle.value === 'zui') {
+    await copy(`<ZIcon icon="zui:${icon}" />`)
+  }
+  else {
+    await copy(`<div class="i-zui:${icon}" />`)
+  }
   message.success('复制成功')
 }
 </script>
@@ -39,6 +51,7 @@ async function handleCopy(icon: string) {
   <div>
     <div flex="~ gap-3" class="mb-3">
       <a-segmented v-model:value="type" :options="typeOptions" />
+      <a-segmented v-model:value="copyStyle" :options="styleOptions" />
       <a-input v-model:value="search" placeholder="在此搜索图标，点击图标可复制代码" />
     </div>
     <div
