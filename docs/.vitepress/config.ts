@@ -1,9 +1,8 @@
 import type { ComponentResolver } from 'unplugin-vue-components/types'
 import type { DefaultTheme } from 'vitepress'
-import { existsSync, readdirSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
-import { pascalCase } from 'es-toolkit'
 import UnoCSS from 'unocss/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
@@ -39,11 +38,13 @@ function getComponentsList(): DefaultTheme.NavItemWithLink[] {
   const exclude = ['_utils', 'composables']
 
   const demos = files.map((file) => {
-    if (file.isDirectory() && existsSync(`${sourceDir}/${file.name}/demos/index.md`) && !exclude.includes(file.name)) {
+    const mdFile = `${sourceDir}/${file.name}/demos/index.md`
+    if (file.isDirectory() && existsSync(mdFile) && !exclude.includes(file.name)) {
       const component = file.name
+      const title = readFileSync(mdFile, 'utf-8').match(/# (.*)/)?.[1]
 
       return {
-        text: `${pascalCase(component)}`,
+        text: `${title}`,
         link: `/components/${component}`,
       }
     }

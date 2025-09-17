@@ -8,6 +8,7 @@ export const sheet = createStyleSheet({
   jssButton: {
     'composes': ['zui-button', 'zui-button-primary'],
     'fontSize': 18,
+    'color': 'red',
     'backgroundColor': 'yellow',
     'padding': [5, 10],
     'margin': [5, 10],
