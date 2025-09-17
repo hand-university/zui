@@ -66,13 +66,15 @@ addCollection(icons)
 
 ## API
 
+所有属性参考 [Iconify Vue](https://iconify.design/docs/icon-components/vue/)
+
 <!-- API -->
 
 ### Icon Props
-
-所有属性参考 [Iconify Vue](https://iconify.design/docs/icon-components/vue/)
 
 | 名称  | 类型     | 默认值      | 说明                                                                        | 版本 |
 | ----- | -------- | ----------- | --------------------------------------------------------------------------- | ---- |
 | size  | `number` | `24`        | 图标的大小                                                                  | -    |
 | color | `string` | `undefined` | 图标的颜色（支持形如 `#FFF`， `#FFFFFF`， `yellow`，`rgb(0, 0, 0)` 的颜色） | -    |
+
+<!-- API -->
