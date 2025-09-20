@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.2.23",
-    "@shikijs/vitepress-twoslash": "^3.12.2",
+    "@shikijs/vitepress-twoslash": "^3.13.0",
     "unplugin-auto-import": "^20.1.0",
     "unplugin-vue-components": "^29.0.0",
     "vitepress": "2.0.0-alpha.12",
