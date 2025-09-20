@@ -16,7 +16,7 @@ const styleOptions = [
   { label: 'UnoCSS', value: 'unocss' },
 ]
 
-const type = useStorage('icon-type', 'all')
+const type = useStorage('icon-type', '')
 const copyStyle = useStorage('copy-icon-style', 'zui')
 
 const search = ref('')
