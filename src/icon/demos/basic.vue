@@ -6,6 +6,7 @@ import { computed, ref } from 'vue'
 import { ZIcon } from '..'
 
 const typeOptions = [
+  { label: 'All', value: '' },
   { label: 'Outline', value: 'outline' },
   { label: 'Filled', value: 'filled' },
 ]
@@ -15,7 +16,7 @@ const styleOptions = [
   { label: 'UnoCSS', value: 'unocss' },
 ]
 
-const type = useStorage('icon-type', 'outline')
+const type = useStorage('icon-type', 'all')
 const copyStyle = useStorage('copy-icon-style', 'zui')
 
 const search = ref('')
@@ -27,6 +28,12 @@ const iconsList = computed(() => {
 })
 
 const iconListFiltered = computed(() => {
+  if (type.value === '') {
+    return iconsList.value.filter((icon) => {
+      return icon.includes(search.value)
+    })
+  }
+
   return iconsList.value.filter((icon) => {
     if (search.value) {
       return icon.includes(search.value) && icon.endsWith(`-${type.value}`)
